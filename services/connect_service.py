@@ -25,7 +25,7 @@ class ConnectService():
             return (False, 'Link does not exist.')
 
     async def push(self, msg: MessageChain, sender, senderName, group, groupName, callback):
-        tar = [(x.fr, x.to) for x in self.getLinks()]
+        tar = [(x.fr, x.to) for x in self.getLinks() if x.fr == group]
         for (_,t) in tar:
             await callback(t, [Plain('({0}){1}:\n'.format(groupName, senderName))] + [x for x in list(msg) if x.type != MessageComponentTypes.Source])
 
