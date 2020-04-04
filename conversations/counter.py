@@ -3,7 +3,7 @@ from mirai import Plain
 
 class Counter(ConversationFlow):
 
-    target = ConversationFlow.TARGET_FRIEND or ConversationFlow.TARGET_GROUP
+    mode = ConversationFlow.MODE_MUTIPLE | ConversationFlow.MODE_SINGLE
     triggerWord = 'count'
 
     def __init__(self, say, kill):

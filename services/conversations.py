@@ -1,9 +1,9 @@
 class ConversationFlow:
     
-    TARGET_FRIEND = 1
-    TARGET_GROUP = 2
+    MODE_SINGLE = 1
+    MODE_MUTIPLE = 2
     
-    target = TARGET_FRIEND
+    mod = MODE_SINGLE
     triggerWord = None
 
     def __init__(self, callback_say, callback_kill):
