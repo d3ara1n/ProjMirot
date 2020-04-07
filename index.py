@@ -1,8 +1,7 @@
 from config import app, Base
 from mirai import Group, GroupMessage, Member, Friend, FriendMessage
 # used bots region
-from bots import connect_bot
-from bots import conversation_bot
+from bots import connect_bot, conversation_bot, ping_bot
 # end of bots region
 
 if __name__ == "__main__":
