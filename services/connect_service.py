@@ -1,11 +1,11 @@
 from mirai import Plain, MessageChain
 from mirai.event.message.base import MessageComponentTypes
-from config import Session
+from data import getSession
 from data.connect_data import GroupLink
 
 class ConnectService():
     def __init__(self):
-        self.session = Session()
+        self.session = getSession()
 
     def addLink(self, fr, to)->tuple:
         if self.session.query(GroupLink).filter(GroupLink.fr == fr and GroupLink.to == to).all():
