@@ -8,9 +8,11 @@ service = RankService()
 async def gm(group: Group, sender: Member, message: GroupMessage):
     if message.toString() == '!rank.query':
         msg = [Plain('rank:\n')]
+        members = await app.memberList(group.id)
         for x in service.query(group.id):
-            memInfo: MemberChangeableSetting = await app.memberInfo(group.id, x[0])
-            msg.append(Plain((memInfo.specialTitle and f'[{memInfo.specialTitle}]' or '') + f'{memInfo.name}:{str(x[1])}\n'))
+            member = [y for y in members if y.id == x[0]]
+            if member:
+                msg.append(Plain(f'{member[0].memberName}:{str(x[1])}\n'))
         await app.sendGroupMessage(group, msg)
     elif message.toString() == '!rank.clear' and sender.id in masters:        
         service.clear(group.id)
